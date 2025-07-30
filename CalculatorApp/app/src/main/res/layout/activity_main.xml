@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/number1Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="1. sayıyı girin"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/number2Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="2. sayıyı girin"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/sumButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sum" />
+
+    <Button
+        android:id="@+id/subtractButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Substract" />
+
+    <Button
+        android:id="@+id/multiplyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Multiply" />
+
+    <Button
+        android:id="@+id/divideButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Divide" />
+
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="Sonuç buraya gelecek"
+        android:textSize="20sp" />
+
+</LinearLayout>
