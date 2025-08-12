@@ -1,5 +1,7 @@
 package com.ozcan.moviebook;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +28,19 @@ public class MoviesAdapter extends RecyclerView .Adapter<MoviesAdapter.MoviesHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MoviesHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MoviesHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.binding.recyclerRowTextView.setText(moviesArrayList.get(position).name);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), DetailsActivity.class);
+                intent.putExtra("movies",moviesArrayList.get(position));
+                holder.itemView.getContext().startActivity(intent);
+
+            }
+        });
     }
 
     @Override

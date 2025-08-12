@@ -1,5 +1,6 @@
 package com.ozcan.moviebook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -23,5 +24,12 @@ public class DetailsActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        Intent intent = getIntent();
+
+        Movies selectedMovies = (Movies) intent.getSerializableExtra("movies");
+
+        binding.nameText.setText(selectedMovies.name);
+        binding.genreText.setText(selectedMovies.genre);
+        binding.imageView.setImageResource(selectedMovies.image);
     }
 }

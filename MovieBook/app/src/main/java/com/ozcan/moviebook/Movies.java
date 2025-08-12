@@ -1,6 +1,9 @@
 package com.ozcan.moviebook;
 
-public class Movies {
+import java.io.Serializable;
+
+public class Movies implements Serializable {
+
     String name;
     String genre;
     int image;
