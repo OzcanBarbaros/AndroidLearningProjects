@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
@@ -30,6 +31,7 @@ import com.ozcan.artbook.databinding.ActivityArtBinding;
 import com.ozcan.artbook.databinding.ActivityMainBinding;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 public class ArtActivity extends AppCompatActivity {
 
@@ -67,9 +69,20 @@ public class ArtActivity extends AppCompatActivity {
         try {
             database = this.openOrCreateDatabase("Arts",MODE_PRIVATE,null);
             database.execSQL("CREATE TABLE İF NOT EXISTS arts(id INTEGER PRIMARY KEY, artname VARCHAR, paintername VARCHAR, year VARCHAR, image BLOB)");
+            String sqlString ="INSERT INTO arts (artname, paintername, year, image) VALUES(?,?,?,?)";
+            SQLiteStatement sqLiteStatement = database.compileStatement(sqlString);
+            sqLiteStatement.bindString(1,name);
+            sqLiteStatement.bindString(2,artistName);
+            sqLiteStatement.bindString(3,year);
+            sqLiteStatement.bindString(4, Arrays.toString(byteArray));
+            sqLiteStatement.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Intent intent = new Intent(ArtActivity.this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public Bitmap makeSmallerImage(Bitmap image, int maximumSize) {
